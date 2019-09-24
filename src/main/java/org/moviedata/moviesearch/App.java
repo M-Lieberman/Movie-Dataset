@@ -15,7 +15,7 @@ public class App {
     public static void main(String[] args) {
         String filename;
         if (args.length == 0 || args[0].isEmpty()) {
-            filename = "src/main/resources/tmdb_5000_movies_2010-2017.csv";
+            filename = "src/main/resources/tmdb_5000_movies.csv";
         } else {
             filename = args[0];
         }
