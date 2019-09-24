@@ -9,8 +9,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         AppTest.class,
         MovieTest.class,
-        KeywordBuilderTest.class,
-        FileReaderTest.class
+        KeywordBuilderTest.class
+//        FileReaderTest.class
 })
 
 public class MovieSearchTestSuite {

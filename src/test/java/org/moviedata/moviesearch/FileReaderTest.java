@@ -8,7 +8,8 @@ public class FileReaderTest {
     public void readTestFile() {
         String relativePath = "src/main/resources/";
         String filename = "data/tmdb_5000_movies_testsample.csv";
-        CsvFileReader.loadMoviesFromFile(relativePath + filename);
+//        CsvFileReader.loadMoviesFromFile(relativePath + filename);
+        CsvFileReader.readFile(relativePath + filename);
     }
 
     @Test
@@ -25,4 +26,10 @@ public class FileReaderTest {
         CsvFileReader.loadMoviesFromFile(relativePath + filename);
     }
 
+    @Test
+    public void readAndSortCompleteFile() {
+        String relativePath = "src/main/resources/";
+        String filename = "data/tmdb_5000_movies.csv";
+        CsvFileReader.readFile(relativePath + filename);
+    }
 }
