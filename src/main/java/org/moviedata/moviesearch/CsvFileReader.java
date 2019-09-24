@@ -8,11 +8,18 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class CsvFileReader {
 
     private static final Logger LOG = LoggerFactory.getLogger(CsvFileReader.class);
+
+    static void readFile(final String filename) {
+        List<Movie> movies = loadMoviesFromFile(filename);
+        processMovies(movies);
+    }
 
     // read file with Apache Commons CSV
     static List<Movie> loadMoviesFromFile(final String filename) {
@@ -34,5 +41,18 @@ class CsvFileReader {
         return movies;
     }
 
+    // TODO method for any test movie collection transformations
+    private static void processMovies(List<Movie> movies) {
 
+        // sort by run time
+//        movies.sort(Comparator.comparingLong(Movie::getRuntimeInMinutes));
+        // sort in place by release date (null safe)
+//        movies.sort(Comparator.comparing(Movie::getReleaseDate, Comparator.nullsLast(Comparator.reverseOrder())));
+
+        // create new sorted list (null safe on release date)
+        List<Movie> sortedMovies = movies.stream().sorted(Comparator.comparing(Movie::getReleaseDate, Comparator.nullsLast(Comparator.reverseOrder()))).collect(Collectors.toList());
+        // print sorted movies
+        System.out.println("Movies sorted by Release Date/n/n");
+        sortedMovies.forEach(System.out::println);
+    }
 }

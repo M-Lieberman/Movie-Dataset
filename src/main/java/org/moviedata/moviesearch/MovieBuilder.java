@@ -8,7 +8,7 @@ class MovieBuilder {
 
     private static final Logger LOG = LoggerFactory.getLogger(MovieBuilder.class);
 
-    public static Movie createMovieFromCSVRecord(final CSVRecord record) {
+    static Movie createMovieFromCSVRecord(final CSVRecord record) {
 
         Movie movie = new Movie();
 
@@ -21,7 +21,7 @@ class MovieBuilder {
         // build keywords
         movie.setKeywords(KeywordBuilder.createKeywordsFromCSVRecord(record));
 
-        LOG.info(">>" + movie.toString() + "\n\n");
+//        LOG.info(">>" + movie.toString() + "\n\n");
         return movie;
     }
 

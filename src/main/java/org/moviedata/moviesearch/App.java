@@ -19,18 +19,6 @@ public class App {
         } else {
             filename = args[0];
         }
-
-        List<Movie> movies = CsvFileReader.loadMoviesFromFile(filename);
-
-        // sort by run time
-//        movies.sort(Comparator.comparingLong(Movie::getRuntimeInMinutes));
-        // sort in place
-        movies.sort(Comparator.comparing(Movie::getReleaseDate));
-        // create new sorted list
-        List<Movie> sortedMovies = movies.stream().sorted(Comparator.comparing(Movie::getReleaseDate)).collect(Collectors.toList());
-
-        // print
-        sortedMovies.forEach(System.out::println);
-
+        CsvFileReader.readFile(filename);
     }
 }
