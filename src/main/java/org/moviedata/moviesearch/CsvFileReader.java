@@ -50,7 +50,9 @@ class CsvFileReader {
 //        movies.sort(Comparator.comparing(Movie::getReleaseDate, Comparator.nullsLast(Comparator.reverseOrder())));
 
         // create new sorted list (null safe on release date)
-        List<Movie> sortedMovies = movies.stream().sorted(Comparator.comparing(Movie::getReleaseDate, Comparator.nullsLast(Comparator.reverseOrder()))).collect(Collectors.toList());
+        List<Movie> sortedMovies = movies.stream()
+                .filter(movie -> movie.getReleaseDate() != null)
+                .sorted(Comparator.comparing(Movie::getReleaseDate, Comparator.nullsLast(Comparator.reverseOrder()))).collect(Collectors.toList());
         // print sorted movies
         System.out.println("Movies sorted by Release Date/n/n");
         sortedMovies.forEach(System.out::println);
